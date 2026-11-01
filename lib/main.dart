@@ -15,7 +15,11 @@ class PostcodesApp extends StatelessWidget {
       title: 'Codis postals',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorSchemeSeed: AppStyles.primary,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: AppStyles.primary,
+          primary: AppStyles.primary,
+          secondary: AppStyles.accent,
+        ),
         scaffoldBackgroundColor: AppStyles.background,
       ),
       home: const SearchScreen(),

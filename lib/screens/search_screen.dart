@@ -99,6 +99,7 @@ class _SearchScreenState extends State<SearchScreen> {
       case SearchStatus.notFound:
         return StatusMessage(
           icon: Icons.search_off,
+          iconColor: AppStyles.accent,
           title: 'No hem trobat cap població per a «$_query»',
           message: 'Revisa el codi postal o prova amb un altre nom.',
         );

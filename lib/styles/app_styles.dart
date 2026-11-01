@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 
 class AppStyles {
   // Colors
-  static const Color primary = Color(0xFF1E6091);
-  static const Color primaryLight = Color(0xFFE3EEF6);
-  static const Color background = Color(0xFFF5F7FA);
+  static const Color primary = Color(0xFF0F796B);
+  static const Color primaryDark = Color(0xFF075447);
+  static const Color primaryLight = Color(0xFFE1F2F1);
+  static const Color accent = Color(0xFFF09952);
+  static const Color background = Color(0xFFF4FAF9);
   static const Color surface = Colors.white;
-  static const Color darkText = Color(0xFF1F2A33);
-  static const Color greyText = Color(0xFF6B7785);
+  static const Color darkText = Color(0xFF1F2A2E);
+  static const Color greyText = Color(0xFF66787A);
   static const Color error = Color(0xFFC0392B);
 
   // Spacing
