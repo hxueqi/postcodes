@@ -1,16 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:postcodes/screens/search_screen.dart';
+import 'package:postcodes/styles/app_styles.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(const PostcodesApp());
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class PostcodesApp extends StatelessWidget {
+  const PostcodesApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(body: Center(child: Text('Hello World!'))),
+    return MaterialApp(
+      title: 'Codis postals',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        colorSchemeSeed: AppStyles.primary,
+        scaffoldBackgroundColor: AppStyles.background,
+      ),
+      home: const SearchScreen(),
     );
   }
 }
