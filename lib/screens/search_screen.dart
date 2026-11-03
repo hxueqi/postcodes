@@ -32,6 +32,17 @@ class _SearchScreenState extends State<SearchScreen> {
     if (query.isEmpty) return;
 
     FocusScope.of(context).unfocus();
+
+    // Only digits but not 5 of them: it can't be a postcode, so we don't
+    // even call the API.
+    if (_isInvalidPostcode(query)) {
+      setState(() {
+        _query = query;
+        _status = SearchStatus.invalidCode;
+      });
+      return;
+    }
+
     setState(() {
       _query = query;
       _status = SearchStatus.loading;
@@ -50,6 +61,13 @@ class _SearchScreenState extends State<SearchScreen> {
       if (!mounted || query != _query) return;
       setState(() => _status = SearchStatus.error);
     }
+  }
+
+  /// Spanish postcodes always have 5 digits. Text with letters is treated as
+  /// a place name, so it is never "invalid".
+  bool _isInvalidPostcode(String query) {
+    final onlyDigits = RegExp(r'^\d+$').hasMatch(query);
+    return onlyDigits && query.length != 5;
   }
 
   /// Called on every keystroke. When the field is emptied, the screen goes
@@ -123,6 +141,13 @@ class _SearchScreenState extends State<SearchScreen> {
           message:
               "Escriu un codi postal (per exemple, 17820) o el nom d'una "
               'població i prem la lupa del teclat.',
+        );
+      case SearchStatus.invalidCode:
+        return StatusMessage(
+          icon: Icons.error_outline,
+          iconColor: AppStyles.accent,
+          title: '«$_query» no és un codi postal vàlid',
+          message: 'Els codis postals tenen 5 xifres, per exemple 17820.',
         );
       case SearchStatus.loading:
         return const Center(child: CircularProgressIndicator());
