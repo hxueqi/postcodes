@@ -13,11 +13,13 @@ class AppStyles {
   static const Color error = Color(0xFFC0392B);
 
   // Spacing
+  static const double tinySpace = 4;
   static const double smallSpace = 8;
   static const double mediumSpace = 16;
   static const double bigSpace = 24;
   static const double hugeSpace = 48;
 
+  static const Widget tinySeparator = SizedBox(width: tinySpace, height: tinySpace);
   static const Widget smallSeparator = SizedBox(width: smallSpace, height: smallSpace);
   static const Widget mediumSeparator = SizedBox(width: mediumSpace, height: mediumSpace);
   static const Widget bigSeparator = SizedBox(width: bigSpace, height: bigSpace);
@@ -26,6 +28,7 @@ class AppStyles {
   static const double fieldRadius = 14;
   static const double cardRadius = 16;
   static const double infoIconSize = 22;
+  static const double weatherIconSize = 56;
   static const double statusIconSize = 64;
 
   // Text styles
@@ -54,6 +57,11 @@ class AppStyles {
   static const TextStyle infoValue = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.w600,
+    color: darkText,
+  );
+  static const TextStyle temperature = TextStyle(
+    fontSize: 28,
+    fontWeight: FontWeight.bold,
     color: darkText,
   );
   static const TextStyle chipText = TextStyle(
