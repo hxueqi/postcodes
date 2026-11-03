@@ -52,6 +52,25 @@ class _SearchScreenState extends State<SearchScreen> {
     }
   }
 
+  /// Called on every keystroke. When the field is emptied, the screen goes
+  /// back to its initial state instead of keeping the old results.
+  void _onTextChanged(String text) {
+    setState(() {
+      if (text.trim().isEmpty) _reset();
+    });
+  }
+
+  void _clearSearch() {
+    _controller.clear();
+    setState(_reset);
+  }
+
+  void _reset() {
+    _status = SearchStatus.initial;
+    _places = [];
+    _query = ''; // a late answer from the API will now be ignored
+  }
+
   void _openDetail(Place place) {
     Navigator.push(
       context,
@@ -71,9 +90,16 @@ class _SearchScreenState extends State<SearchScreen> {
               controller: _controller,
               textInputAction: TextInputAction.search,
               onSubmitted: _search,
+              onChanged: _onTextChanged,
               decoration: InputDecoration(
                 hintText: 'Codi postal o nom de població',
                 prefixIcon: const Icon(Icons.search),
+                suffixIcon: _controller.text.isEmpty
+                    ? null
+                    : IconButton(
+                        icon: const Icon(Icons.close),
+                        onPressed: _clearSearch,
+                      ),
                 filled: true,
                 fillColor: AppStyles.surface,
                 border: OutlineInputBorder(
