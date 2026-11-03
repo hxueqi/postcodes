@@ -24,6 +24,8 @@ class AppStyles {
 
   // Sizes
   static const double fieldRadius = 14;
+  static const double cardRadius = 16;
+  static const double infoIconSize = 22;
   static const double statusIconSize = 64;
 
   // Text styles
@@ -43,6 +45,22 @@ class AppStyles {
     color: darkText,
   );
   static const TextStyle placeRegion = TextStyle(fontSize: 13, color: greyText);
+  static const TextStyle sectionTitle = TextStyle(
+    fontSize: 17,
+    fontWeight: FontWeight.bold,
+    color: darkText,
+  );
+  static const TextStyle infoLabel = TextStyle(fontSize: 13, color: greyText);
+  static const TextStyle infoValue = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+    color: darkText,
+  );
+  static const TextStyle chipText = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w600,
+    color: primaryDark,
+  );
   static const TextStyle resultsCount = TextStyle(
     fontSize: 13,
     fontWeight: FontWeight.w600,

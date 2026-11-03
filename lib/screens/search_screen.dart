@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:postcodes/models/place.dart';
 import 'package:postcodes/models/search_status.dart';
+import 'package:postcodes/screens/place_detail_screen.dart';
 import 'package:postcodes/services/geocoding_api.dart';
 import 'package:postcodes/styles/app_styles.dart';
 import 'package:postcodes/widgets/place_tile.dart';
@@ -51,14 +52,17 @@ class _SearchScreenState extends State<SearchScreen> {
     }
   }
 
+  void _openDetail(Place place) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => PlaceDetailScreen(place: place)),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Codis postals'),
-        backgroundColor: AppStyles.primary,
-        foregroundColor: AppStyles.surface,
-      ),
+      appBar: AppBar(title: const Text('Codis postals')),
       body: Column(
         children: [
           Padding(
@@ -134,7 +138,13 @@ class _SearchScreenState extends State<SearchScreen> {
           child: ListView.separated(
             itemCount: count,
             separatorBuilder: (context, index) => const Divider(height: 1),
-            itemBuilder: (context, index) => PlaceTile(place: _places[index]),
+            itemBuilder: (context, index) {
+              final place = _places[index];
+              return PlaceTile(
+                place: place,
+                onTap: () => _openDetail(place),
+              );
+            },
           ),
         ),
       ],

@@ -21,6 +21,10 @@ class PostcodesApp extends StatelessWidget {
           secondary: AppStyles.accent,
         ),
         scaffoldBackgroundColor: AppStyles.background,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: AppStyles.primary,
+          foregroundColor: AppStyles.surface,
+        ),
       ),
       home: const SearchScreen(),
     );
